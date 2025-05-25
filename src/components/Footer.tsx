@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
               <img 
-                src="public/logo.png" 
+                src="/logo.png" 
                 alt="MIT Editorial Board" 
                 className="h-14 w-auto mr-3"
               />
