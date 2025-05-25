@@ -51,7 +51,7 @@ const AboutSection =  forwardRef<HTMLDivElement>((_, ref) => {
               <div className="absolute -top-5 -left-5 w-24 h-24 bg-edboard-accent/20 rounded-full blur-xl"></div>
               <div className="absolute -bottom-5 -right-5 w-32 h-32 bg-edboard-accent/10 rounded-full blur-xl"></div>
               <img 
-                src="public\Group pic.jpg" 
+                src="/Group pic.jpg" 
                 alt="Editorial Board Team" 
                 className="rounded-lg shadow-xl border border-edboard-accent/20 w-full h-auto object-cover transform hover:scale-[1.01] transition-transform duration-300"
                 style={{ maxHeight: "400px" }}
