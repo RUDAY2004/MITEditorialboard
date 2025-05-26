@@ -34,6 +34,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
   useEffect(() => {
     // Set dimensions on mount and when window resizes
     const handleResize = () => {
+<<<<<<< HEAD
       if (canvasRef.current) {
         // Get the parent element's dimensions
         const parent = canvasRef.current.parentElement;
@@ -60,10 +61,23 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     
     return () => {
       resizeObserver.disconnect();
+=======
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+>>>>>>> origin/sangini
       window.removeEventListener('resize', handleResize);
     };
   }, []);
 
+<<<<<<< HEAD
   // Adjust particle count based on screen size
   useEffect(() => {
     const adjustedParticleCount = Math.floor(
@@ -71,6 +85,9 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     );
     
     // Reinitialize particles with adjusted count
+=======
+  useEffect(() => {
+>>>>>>> origin/sangini
     const canvas = canvasRef.current;
     if (!canvas) return;
     
@@ -202,6 +219,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     };
   }, []);
 
+<<<<<<< HEAD
   // Add touch support for mobile
   useEffect(() => {
     const handleTouch = (e: TouchEvent) => {
@@ -234,6 +252,14 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
       width={dimensions.width}
       height={dimensions.height}
       style={{ touchAction: 'none' }} // Prevent default touch actions
+=======
+  return (
+    <canvas 
+      ref={canvasRef}
+      className="absolute inset-0 z-0" 
+      width={dimensions.width}
+      height={dimensions.height}
+>>>>>>> origin/sangini
     />
   );
 };
