@@ -68,11 +68,11 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
   useEffect(() => {
     const isMobile = dimensions.width < 768;
     const adjustedParticleCount = isMobile 
-      ? Math.floor(particleCount * 0.5) // Reduce particles on mobile
+      ? Math.floor(particleCount * 0.3) // Reduced to 30% for mobile
       : Math.floor((dimensions.width * dimensions.height) / (1920 * 1080) * particleCount);
     
     const adjustedConnectionDistance = isMobile 
-      ? 80 // Shorter connection distance on mobile
+      ? 60 // Even shorter connection distance for mobile
       : connectionDistance;
 
     const canvas = canvasRef.current;
@@ -97,8 +97,8 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
         y,
         radius,
         color: `rgba(255, 255, 255, ${opacity})`,
-        vx: (Math.random() - 0.5) * 0.5, // Slower movement
-        vy: (Math.random() - 0.5) * 0.5, // Slower movement
+        vx: (Math.random() - 0.5) * (isMobile ? 0.2 : 0.5), // Much slower on mobile
+        vy: (Math.random() - 0.5) * (isMobile ? 0.2 : 0.5), // Much slower on mobile
         originalX: x,
         originalY: y,
         

@@ -32,12 +32,12 @@ export default function Hero({ aboutRef }: HeroProps) {
   
 
   return (
-    <section className="relative w-full h-[100svh] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full h-[80vh] sm:h-[100svh] flex items-center justify-center overflow-hidden">
       <ParticleAnimation />
       
       <div className="absolute inset-0 bg-gradient-to-b z-[1]"></div>
       
-      <div className="relative z-10 text-center max-w-5xl mx-auto px-4 pt-4 pb-16">
+      <div className="relative z-10 text-center max-w-5xl mx-auto px-4 pt-4 pb-8 sm:pb-16">
         <h1 className="heading-1 mb-4 sm:mb-6 md:mb-8 text-white">
           <span className="typing-container">
             <TypingAnimation 
