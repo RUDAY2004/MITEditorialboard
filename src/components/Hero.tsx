@@ -32,7 +32,7 @@ export default function Hero({ aboutRef }: HeroProps) {
   
 
   return (
-    <section className="relative w-full h-[80vh] sm:h-[100svh] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full h-[100svh] flex items-center justify-center overflow-hidden">
       <ParticleAnimation />
       
       <div className="absolute inset-0 bg-gradient-to-b z-[1]"></div>
@@ -44,17 +44,17 @@ export default function Hero({ aboutRef }: HeroProps) {
               text="MIT EDITORIAL BOARD" 
               typingSpeed={100} 
               delay={500}
-              className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl tracking-wide shimmer-text break-words"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl tracking-wide shimmer-text"
             />
           </span>
         </h1>
         
-        <p className={`text-sm sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-6 sm:mb-10 md:mb-12 px-2 sm:px-6 transition-opacity duration-1000 ${showFullText ? 'opacity-100' : 'opacity-0'}`}>
+        <p className={`text-base sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 transition-opacity duration-1000 ${showFullText ? 'opacity-100' : 'opacity-0'}`}>
           Welcome to the MIT Editorial Board, the creative hub and driving force behind the Manipal Institute of Technology's official student body and yearbook committee.
         </p>
         
         <div className={`transition-all duration-1000 transform ${showFullText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <button className="bg-white hover:bg-blue-100 text-[#1a1f2c] text-base sm:text-base font-semibold py-2 px-6 sm:py-3 sm:px-8 rounded-full transition-all duration-300 transform hover:scale-105" onClick={scrollToSection}>
+          <button className="bg-white hover:bg-blue-100 text-[#1a1f2c] font-semibold py-2 px-6 sm:py-3 sm:px-8 rounded-full transition-all duration-300 transform hover:scale-105" onClick={scrollToSection}>
             Explore
           </button>
         </div>

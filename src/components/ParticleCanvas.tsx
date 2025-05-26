@@ -64,29 +64,27 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     };
   }, []);
 
-  // Adjust particle count and connection distance based on screen size
+  // Adjust particle count based on screen size
   useEffect(() => {
-    const isMobile = dimensions.width < 768;
-    const adjustedParticleCount = isMobile 
-      ? Math.floor(particleCount * 0.3) // Reduced to 30% for mobile
-      : Math.floor((dimensions.width * dimensions.height) / (1920 * 1080) * particleCount);
+    const adjustedParticleCount = Math.floor(
+      (dimensions.width * dimensions.height) / (1920 * 1080) * particleCount
+    );
     
-    const adjustedConnectionDistance = isMobile 
-      ? 60 // Even shorter connection distance for mobile
-      : connectionDistance;
-
+    // Reinitialize particles with adjusted count
     const canvas = canvasRef.current;
     if (!canvas) return;
     
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     
+    // Initialize particles when canvas dimensions change
     canvas.width = dimensions.width;
     canvas.height = dimensions.height;
     
+    // Create particles
     const particles: Particle[] = [];
     
-    for (let i = 0; i < adjustedParticleCount; i++) {
+    for (let i = 0; i < particleCount; i++) {
       const x = Math.random() * canvas.width;
       const y = Math.random() * canvas.height;
       const radius = Math.random() * 2 + 1;
@@ -97,16 +95,15 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
         y,
         radius,
         color: `rgba(255, 255, 255, ${opacity})`,
-        vx: (Math.random() - 0.5) * (isMobile ? 0.2 : 0.5), // Much slower on mobile
-        vy: (Math.random() - 0.5) * (isMobile ? 0.2 : 0.5), // Much slower on mobile
+        vx: (Math.random() - 0.5) * 0.5, // Slower movement
+        vy: (Math.random() - 0.5) * 0.5, // Slower movement
         originalX: x,
         originalY: y,
         
         update(mouseX, mouseY) {
-          // Slower movement on mobile
-          const speedFactor = isMobile ? 0.3 : 0.5;
-          this.x += this.vx * speedFactor;
-          this.y += this.vy * speedFactor;
+          // Regular movement
+          this.x += this.vx;
+          this.y += this.vy;
           
           // Bounce off walls
           if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
@@ -148,20 +145,21 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     
     particlesRef.current = particles;
     
+    // Animation loop
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Draw connections with adjusted distance
+      // Draw connections between particles
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
-          if (distance < adjustedConnectionDistance) {
+          if (distance < connectionDistance) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(255, 255, 255, ${0.6 * (1 - distance / adjustedConnectionDistance)})`;
-            ctx.lineWidth = isMobile ? 0.2 : 0.3;
+            ctx.strokeStyle = `rgba(255, 255, 255, ${0.8 * (1 - distance / connectionDistance)})`;
+            ctx.lineWidth = 0.3;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.stroke();
