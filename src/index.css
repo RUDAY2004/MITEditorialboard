@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/sangini
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -127,6 +130,12 @@
     @apply w-full;
   }
 
+<<<<<<< HEAD
+=======
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out;
+  }
+>>>>>>> origin/sangini
   
 }
 
@@ -159,4 +168,11 @@
   .animate-scale-in {
     animation: scaleIn 0.3s ease forwards;
   }
+<<<<<<< HEAD
+=======
+
+  .custom-cursor {
+    pointer-events: none;
+  }
+>>>>>>> origin/sangini
 }
