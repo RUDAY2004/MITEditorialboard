@@ -1,10 +1,10 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/context/ThemeContext";
+import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import Team from "./pages/Team";
 import Gallery from "./pages/Gallery";
@@ -13,7 +13,7 @@ import ContactUs from "./pages/ContactUs";
 import Yearbook from "./pages/Yearbook";
 
 // Import LOGO for favicon
-const faviconUrl = "/lovable-uploads/eac6fb44-f160-4eea-a0a7-c30bbe941d7f.png";
+const faviconUrl = "/logo.png";
 
 // Update favicon
 const setFavicon = () => {
@@ -34,15 +34,13 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/team" element={<Team />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/yearbook" element={<Yearbook />} />
-
-            
-            
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

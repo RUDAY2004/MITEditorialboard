@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -127,6 +126,9 @@
     @apply w-full;
   }
 
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out;
+  }
   
 }
 
@@ -158,5 +160,9 @@
   
   .animate-scale-in {
     animation: scaleIn 0.3s ease forwards;
+  }
+
+  .custom-cursor {
+    pointer-events: none;
   }
 }
